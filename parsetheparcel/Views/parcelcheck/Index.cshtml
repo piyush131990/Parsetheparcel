@@ -1,0 +1,65 @@
+﻿@model parsetheparsel.Models.parcelModel
+@{ 
+    Layout = null;
+}
+@using (Html.BeginForm("Index", "parcelcheck", FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Breadth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.TextBoxFor(m => m.Length)<br />
+            @Html.ValidationMessageFor(m =>m.Length,"" ,new { @style = "color:red;font-size: 10px;" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Breadth)<br />
+            @Html.ValidationMessageFor(m => m.Breadth, "", new { @style = "color:red;font-size: 10px;" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Height)<br />
+            @Html.ValidationMessageFor(m => m.Height, "", new { @style = "color:red;font-size: 10px;" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Weight)<br />
+            @Html.ValidationMessageFor(m => m.Weight, "", new { @style = "color:red;font-size: 10px;" })
+        </td>
+
+    </tr>
+    <tr>
+        <td></td>
+
+        <td><input type="submit" value="check price" /></td>
+    </tr>
+    <tr>
+        
+        <td style="color:Red">@ViewBag.Length </td>
+        <td style="color:Red">@ViewBag.Breadth</td>
+        <td style="color:Red">@ViewBag.Height</td>
+        <td style="color:Red">@ViewBag.Weight</td>
+        
+    </tr>
+
+</table>
+<div style="color:Red">
+    @ViewBag.finalmessage
+</div>
+<div style="color:Red">
+    @Html.Raw(ViewBag.parcelcost)
+</div>
+}
